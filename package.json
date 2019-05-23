@@ -32,5 +32,17 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "enzyme-to-json": "^3.3.5"
-  }
+  },
+  "description": "egghead react jest enzyme testing course",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmshanahan/enzymejest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmshanahan/enzymejest/issues"
+  },
+  "homepage": "https://github.com/jmshanahan/enzymejest#readme"
 }
