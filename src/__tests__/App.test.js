@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import { configure, shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import '../../enzyme.config';
+import App from '../App';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Link from './Link';
 
-configure({ adapter: new Adapter() });
 describe('App shallow rendering', () => {
   it('should render app', () => {
     const wrapper = shallow(<App />, {
@@ -45,21 +43,5 @@ describe('App mount rendering ', () => {
     const wrapper = mount(<App />);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
-  });
-});
-describe('<Link/> ', () => {
-  it('link component accepts address prop', () => {
-    const wrapper = shallow(<Link address="www.google.com" />);
-    expect(wrapper.instance().props.address).toBe('www.google.com');
-  });
-  it('a tag node renders href correctly', () => {
-    const wrapper = shallow(<Link address="www.google.com" />);
-    expect(wrapper.props().href).toBe('www.google.com');
-  });
-  it('returns null with true hide block', () => {
-    const wrapper = shallow(<Link hide={false} />);
-    expect(wrapper.find('a').length).toBe(1);
-    wrapper.setProps({ hide: true });
-    expect(wrapper.get(0)).toBeNull();
   });
 });
