@@ -31,7 +31,8 @@
   "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
-    "enzyme-to-json": "^3.3.5"
+    "enzyme-to-json": "^3.3.5",
+    "sinon": "^7.3.2"
   },
   "description": "egghead react jest enzyme testing course",
   "main": "index.js",

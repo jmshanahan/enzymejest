@@ -1,6 +1,7 @@
 import React from 'react';
+import { spy } from 'sinon';
 import '../../enzyme.config';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Link from '../Link';
 describe('<Link/> ', () => {
   it('link component accepts address prop', () => {
@@ -16,5 +17,14 @@ describe('<Link/> ', () => {
     expect(wrapper.find('a').length).toBe(1);
     wrapper.setProps({ hide: true });
     expect(wrapper.get(0)).toBeNull();
+  });
+  it('calls componentDidMount', () => {
+    // jest.spyOn(Link.prototype, 'componentDidMount');
+    //Using sinon
+    const componentDidMountSpy = spy(Link.prototype, 'componentDidMount');
+
+    mount(<Link />);
+    expect(Link.prototype.componentDidMount.calledOnce).toBeTruthy();
+    componentDidMountSpy.restore();
   });
 });

@@ -4,6 +4,7 @@ import '../../enzyme.config';
 import App from '../App';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { jsxEmptyExpression } from '@babel/types';
 
 describe('App shallow rendering', () => {
   it('should render app', () => {
@@ -31,6 +32,18 @@ describe('App shallow rendering', () => {
     expect(wrapper.find('h2').text()).toBe('');
     input.simulate('change', { currentTarget: { value: 'Tyler' } });
     expect(wrapper.find('h2').text()).toBe('Tyler');
+  });
+  it('updates className on new state', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find('.blue').length).toBe(1);
+    wrapper.setState({ mainColor: 'red' });
+    expect(wrapper.find('.blue').length).toBe(0);
+    expect(wrapper.find('.red').length).toBe(1);
+  });
+  it('calls componentDidMount', () => {
+    jest.spyOn(App.prototype, 'componentDidMount');
+    shallow(<App />);
+    expect(App.prototype.componentDidMount.mock.calls.length).toBe(1);
   });
 });
 describe('App mount rendering ', () => {
