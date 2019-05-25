@@ -4,7 +4,6 @@ import '../../enzyme.config';
 import App from '../App';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { jsxEmptyExpression } from '@babel/types';
 
 describe('App shallow rendering', () => {
   it('should render app', () => {
@@ -42,8 +41,16 @@ describe('App shallow rendering', () => {
   });
   it('calls componentDidMount', () => {
     jest.spyOn(App.prototype, 'componentDidMount');
-    shallow(<App />);
+    const wrapper = shallow(<App />);
     expect(App.prototype.componentDidMount.mock.calls.length).toBe(1);
+    expect(wrapper.find('.lifeCycle').text()).toMatch(/componentDidMount/);
+  });
+  it('setProps calls componentWillReceiveProps', () => {
+    jest.spyOn(App.prototype, 'componentWillReceiveProps');
+    const wrapper = shallow(<App />);
+    wrapper.setProps({ hide: true });
+    expect(App.prototype.componentWillReceiveProps.mock.calls.length).toBe(1);
+    expect(App.prototype.componentWillReceiveProps.mock.calls.length).toBe(1);
   });
 });
 describe('App mount rendering ', () => {

@@ -13,16 +13,28 @@ function fetchBoxes() {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { on: false, input: '', mainColor: 'blue', boxes: [] };
+    this.state = {
+      on: false,
+      input: '',
+      mainColor: 'blue',
+      boxes: [],
+      lifeCycle: ''
+    };
   }
   componentDidMount() {
+    this.setState({ lifeCycle: 'componentDidMountut' });
+
     fetchBoxes().then(boxes => this.setState({ boxes }));
+  }
+  componentWillReceiveProps() {
+    this.setState({ lifeCycle: 'componentWillReceiveProps' });
   }
   render() {
     return (
       <div className="App">
         <h1 className="App-title">Welcome to React</h1>
         <h3 className={this.state.mainColor}>Everyone is Welcome</h3>
+        <p className="lifeCycle">{this.state.lifeCycle}</p>
         <Test />
         <p className="button-state">{this.state.on ? 'Yes!' : 'No!'}</p>
         <button onClick={() => this.setState({ on: true })}>Click</button>

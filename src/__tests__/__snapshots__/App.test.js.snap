@@ -15,6 +15,11 @@ exports[`App mount rendering  matches the snapshot 1`] = `
     >
       Everyone is Welcome
     </h3>
+    <p
+      className="lifeCycle"
+    >
+      componentDidMountut
+    </p>
     <Test>
       <div>
         Testing
@@ -53,6 +58,11 @@ exports[`App shallow rendering matches the snapshot 1`] = `
   >
     Everyone is Welcome
   </h3>
+  <p
+    className="lifeCycle"
+  >
+    componentDidMountut
+  </p>
   <Test />
   <p
     className="button-state"
