@@ -52,6 +52,13 @@ describe('App shallow rendering', () => {
     expect(App.prototype.componentWillReceiveProps.mock.calls.length).toBe(1);
     expect(App.prototype.componentWillReceiveProps.mock.calls.length).toBe(1);
   });
+  it('handleStrings function returns correctly', () => {
+    const wrapper = shallow(<App />);
+    const trueReturn = wrapper.instance().handleStrings('Hello World');
+    const falseReturn = wrapper.instance().handleStrings('');
+    expect(trueReturn).toBeTruthy();
+    expect(falseReturn).toBeFalsy();
+  });
 });
 describe('App mount rendering ', () => {
   it('should render app', () => {

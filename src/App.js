@@ -29,6 +29,10 @@ class App extends React.Component {
   componentWillReceiveProps() {
     this.setState({ lifeCycle: 'componentWillReceiveProps' });
   }
+  handleStrings(str) {
+    if (str === 'Hello World') return true;
+    else false;
+  }
   render() {
     return (
       <div className="App">
