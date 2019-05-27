@@ -33,7 +33,7 @@ export default class Home extends Component {
   }
   handleStrings(str) {
     if (str === 'Hello World') return true;
-    else false;
+    else return false;
   }
 
   render() {
