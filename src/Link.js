@@ -13,6 +13,11 @@ export default class Link extends Component {
     super(props);
     this.state = { items: [] };
   }
+  addItems = () => {
+    this.setState(prevState => {
+      return { items: prevState.items };
+    });
+  };
   componentDidMount() {
     fetchData().then(items => this.setState({ items }));
   }
